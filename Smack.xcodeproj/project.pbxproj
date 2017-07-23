@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6806797D1F24A92E00976227 /* RoundedBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6806797C1F24A92E00976227 /* RoundedBtn.swift */; };
 		6808A4871F20888D00F72E0B /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6808A4861F20888D00F72E0B /* ChatVC.swift */; };
 		6808A4891F20889C00F72E0B /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6808A4881F20889C00F72E0B /* ChannelVC.swift */; };
 		6808A48B1F20F50300F72E0B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6808A48A1F20F50300F72E0B /* GradientView.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		17B7FE9EDFA437FD1F578EB7 /* Pods_Smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA616B41183FB500B9921B2 /* Pods-Smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.release.xcconfig"; sourceTree = "<group>"; };
+		6806797C1F24A92E00976227 /* RoundedBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBtn.swift; sourceTree = "<group>"; };
 		6808A4861F20888D00F72E0B /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		6808A4881F20889C00F72E0B /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		6808A48A1F20F50300F72E0B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				6808A48A1F20F50300F72E0B /* GradientView.swift */,
+				6806797C1F24A92E00976227 /* RoundedBtn.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				6808A4891F20889C00F72E0B /* ChannelVC.swift in Sources */,
 				6808A4871F20888D00F72E0B /* ChatVC.swift in Sources */,
+				6806797D1F24A92E00976227 /* RoundedBtn.swift in Sources */,
 				68B4890C1F2119BA00D41801 /* CreateAccountVC.swift in Sources */,
 				686AF78C1F22584100A15838 /* AuthService.swift in Sources */,
 				6808A48B1F20F50300F72E0B /* GradientView.swift in Sources */,
