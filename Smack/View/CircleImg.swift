@@ -12,7 +12,7 @@ import UIKit
 class CircleImg: UIImageView {
     
     override func awakeFromNib() {
-        
+        setupView()
     }
     
     func setupView() {

@@ -221,6 +221,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="7co-9C-n2O" eventType="touchUpInside" id="9ed-KW-xMq"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qIx-Y5-hEe">
                                 <rect key="frame" x="62.5" y="185" width="250" height="100"/>
@@ -294,6 +297,10 @@
                                     <action selector="createAccBtnPressed:" destination="7co-9C-n2O" eventType="touchUpInside" id="4fC-vg-0Sp"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nz7-qd-6HH">
+                                <rect key="frame" x="169" y="235" width="37" height="37"/>
+                                <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -301,8 +308,10 @@
                             <constraint firstItem="Q2B-bU-Sx7" firstAttribute="top" secondItem="hhf-Iy-Nhf" secondAttribute="top" constant="25" id="I6c-5M-sZa"/>
                             <constraint firstItem="qIx-Y5-hEe" firstAttribute="centerX" secondItem="JCO-ci-LBh" secondAttribute="centerX" id="I6d-n5-KYB"/>
                             <constraint firstItem="hhf-Iy-Nhf" firstAttribute="trailing" secondItem="Q2B-bU-Sx7" secondAttribute="trailing" constant="16" id="Jx6-gv-Bpc"/>
+                            <constraint firstItem="Nz7-qd-6HH" firstAttribute="centerY" secondItem="JCO-ci-LBh" secondAttribute="centerY" constant="-80" id="LcE-2y-A7x"/>
                             <constraint firstItem="xjS-2d-VaY" firstAttribute="centerX" secondItem="JCO-ci-LBh" secondAttribute="centerX" id="Pxq-gO-Ggh"/>
                             <constraint firstItem="qIx-Y5-hEe" firstAttribute="top" secondItem="xjS-2d-VaY" secondAttribute="bottom" constant="45" id="RQE-q0-AhI"/>
+                            <constraint firstItem="Nz7-qd-6HH" firstAttribute="centerX" secondItem="JCO-ci-LBh" secondAttribute="centerX" id="RY8-jF-KDU"/>
                             <constraint firstItem="pUM-zu-Fan" firstAttribute="centerX" secondItem="JCO-ci-LBh" secondAttribute="centerX" id="SCT-kV-JzU"/>
                             <constraint firstItem="ETK-dH-R5q" firstAttribute="top" secondItem="qIx-Y5-hEe" secondAttribute="bottom" constant="40" id="oEn-a9-ogT"/>
                             <constraint firstItem="ETK-dH-R5q" firstAttribute="centerX" secondItem="JCO-ci-LBh" secondAttribute="centerX" id="xAd-9p-DRn"/>
@@ -311,6 +320,9 @@
                         <viewLayoutGuide key="safeArea" id="hhf-Iy-Nhf"/>
                     </view>
                     <connections>
+                        <outlet property="passwordTxt" destination="ywR-dD-uLw" id="Sar-ug-56u"/>
+                        <outlet property="spinner" destination="Nz7-qd-6HH" id="XFs-ff-ghM"/>
+                        <outlet property="usernameTxt" destination="Iox-uJ-Isa" id="e9J-UK-S0u"/>
                         <segue destination="nwJ-Aw-DJZ" kind="show" identifier="toCreateAccount" id="kjV-IJ-IWG"/>
                     </connections>
                 </viewController>
@@ -406,7 +418,7 @@
                                     <constraint firstAttribute="width" constant="100" id="p5Q-HD-vbT"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuk-sF-enW" customClass="Cir">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuk-sF-enW">
                                 <rect key="frame" x="137.5" y="319" width="100" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="zpG-3m-S6b"/>
