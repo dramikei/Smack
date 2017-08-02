@@ -20,7 +20,7 @@ class MessageService {
         
         Alamofire.request(URL_GET_CHANNELS, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             
-            if response.result.error != nil {
+            if response.result.error == nil {
                 
                 guard let data = response.data else { return }
                 if let json = JSON(data: data).array {
@@ -31,6 +31,7 @@ class MessageService {
                         
                         let channel = Channel(channelTitle: name, channelDescription: channelDesc, id: id)
                         self.channels.append(channel)
+                        print(channel)
                     }
                     completion(true)
                 }

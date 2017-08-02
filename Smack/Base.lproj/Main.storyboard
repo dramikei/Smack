@@ -114,6 +114,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HB-FO-bU8">
                                 <rect key="frame" x="281" y="101" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
+                                <connections>
+                                    <action selector="addChannelPressed:" destination="0Cz-lL-X9h" eventType="touchUpInside" id="jZy-h9-5LA"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="13u-60-GF7" customClass="CircleImg" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="20" y="572" width="75" height="75"/>
@@ -184,6 +187,7 @@
                         <viewLayoutGuide key="safeArea" id="515-bx-7c5"/>
                     </view>
                     <connections>
+                        <outlet property="addChannelBtn" destination="9HB-FO-bU8" id="ON0-wG-net"/>
                         <outlet property="loginBtn" destination="9lU-VU-p85" id="reN-Ep-6FR"/>
                         <outlet property="tableView" destination="Y3a-hK-Zwq" id="5Zd-z3-X2D"/>
                         <outlet property="userImg" destination="13u-60-GF7" id="0wH-E9-JSY"/>

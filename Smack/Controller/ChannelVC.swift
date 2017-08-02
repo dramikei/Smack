@@ -18,6 +18,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addChannelBtn: UIButton!
+    
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
     override func viewDidLoad() {
@@ -26,7 +28,6 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +37,20 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @objc func userDataDidChange(_ notif: Notification) {
         setupUserInfo()
     }
+    
+    
+    @IBAction func addChannelPressed(_ sender: Any) {
+        
+        if AuthService.instance.isLoggedIn {
+            let addChannel = AddChannelVC()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil)
+        } else {
+            
+        }
+        
+    }
+    
     
     @IBAction func loginBtnPressed(_ sender: Any) {
         
