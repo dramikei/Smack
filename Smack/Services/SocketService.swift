@@ -8,15 +8,11 @@
 
 import UIKit
 import SocketIO
-
-
 class SocketService: NSObject {
     static let instance = SocketService()
-    
     override init() {
         super.init()
     }
-    
     var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: BASE_URL)!)
     func establishConnection() {
         socket.connect()
@@ -24,15 +20,11 @@ class SocketService: NSObject {
     func closeConnection() {
         socket.disconnect()
     }
-    
     func addChannel(ChannelName: String, channelDescription: String, completion: @escaping CompletionHandler) {
         socket.emit("newChannel", ChannelName, channelDescription)
         completion(true)
-        
     }
-    
     func getChannel(completion: @escaping CompletionHandler) {
-        
         socket.on("channelCreated") { (dataArray, ack) in
             guard let channelName = dataArray[0] as? String else { return }
             guard let channelDesc = dataArray[1] as? String else { return }
@@ -40,15 +32,7 @@ class SocketService: NSObject {
             
             let newChannel = Channel(channelTitle: channelName, channelDescription: channelDesc, id: channelId)
             MessageService.instance.channels.append(newChannel)
-            completion(true)
+            completion(true)    
         }
-        
-        
     }
-    
-    
-    
-    
-    
-    
 }

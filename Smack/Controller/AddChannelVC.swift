@@ -7,24 +7,15 @@
 //
 
 import UIKit
-
 class AddChannelVC: UIViewController {
     
     @IBOutlet weak var nameTxt: UITextField!
-    
     @IBOutlet weak var chanDesc: UITextField!
-    
     @IBOutlet weak var bgView: UIView!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
     }
-    
-    
     @IBAction func createChannelPressed(_ sender: Any) {
         
         guard let channelName = nameTxt.text , nameTxt.text != "" else { return }
@@ -49,5 +40,4 @@ class AddChannelVC: UIViewController {
     @objc func closeTap(_ recognize: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
