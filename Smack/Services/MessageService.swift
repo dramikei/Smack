@@ -62,7 +62,7 @@ class MessageService {
                         let messageBody = item["messageBody"].stringValue
                         let channelid = item["channelId"].stringValue
                         let id = item["_id"].stringValue
-                        let username = item["username"].stringValue
+                        let username = item["userName"].stringValue
                         let userAvatar = item["userAvatar"].stringValue
                         let userAvatarColor = item["userAvatarColor"].stringValue
                         let timeStamp = item["timeStamp"].stringValue
@@ -79,22 +79,13 @@ class MessageService {
             } else {
                 debugPrint(response.result.error as Any)
                 completion(false)
-                
             }
-            
         }
-        
-        
-        
     }
-    
     func clearMessages() {
         messages.removeAll()
     }
-    
     func clearChannels() {
         channels.removeAll()
-        
     }
-    
 }
