@@ -48,7 +48,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         
-        SocketService.instance.getChatMessage { (success) in
+        /*SocketService.instance.getChatMessage { (success) in
             if success {
                 self.tableView.reloadData()
                 if MessageService.instance.messages.count > 0 {
@@ -56,6 +56,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
                 }
             }
+        }*/
+        
+        SocketService.instance.getChatMessage { (newMessage) in
+            if newMessage.channelid == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
+                MessageService.instance.messages.append(newMessage)
+                self.tableView.reloadData()
+                if MessageService.instance.messages.count > 0 {
+                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                    self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
+                }
+            }
+            
+            
+            
         }
         
         SocketService.instance.getTypingUsers { (typingUsers) in
@@ -137,14 +151,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     @objc func handleTap() {
