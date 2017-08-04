@@ -20,6 +20,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var sendBtn: UIButton!
     
+    @IBOutlet weak var typingUsersLabel: UILabel!
+    
+    
     var isTyping = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
+        
+        
+        
+        
         SocketService.instance.getChatMessage { (success) in
             if success {
                 self.tableView.reloadData()
@@ -50,6 +57,38 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
+        
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return }
+            var names = ""
+            var numberOfTypers = 0
+            for (typingUser, channel) in typingUsers {
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numberOfTypers+=1
+                }
+            }
+            if numberOfTypers > 0 && AuthService.instance.isLoggedIn == true {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLabel.text = "\(names) \(verb) typing a message"
+            } else {
+                self.typingUsersLabel.text = ""
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
         
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail(completion: { (success) in
@@ -83,11 +122,15 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBAction func editing(_ sender: Any) {
         
         if messageTxtBox.text == "" {
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return }
             isTyping = false
             sendBtn.isHidden = true
+            SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
         } else {
             if isTyping == false {
+                guard let channelId = MessageService.instance.selectedChannel?.id else { return }
                 sendBtn.isHidden = false
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
@@ -155,6 +198,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
                 if success {
                     self.messageTxtBox.text = ""
+                    self.isTyping = false
+                    self.sendBtn.isHidden = true
+                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
                     //self.messageTxtBox.resignFirstResponder()
                 }
             })
