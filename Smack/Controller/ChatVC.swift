@@ -41,7 +41,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
-        SocketService.instance.getChannel { (success) in
+        SocketService.instance.getChatMessage { (success) in
             if success {
                 self.tableView.reloadData()
                 if MessageService.instance.messages.count > 0 {
